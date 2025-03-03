@@ -1,0 +1,122 @@
+[
+  {
+    "contentTypes": "How-to Articles",
+    "descriptionEN": "Step-by-step guides on how to use, install, or select products, tailored to customer needs.",
+    "descriptionVN": "Hướng dẫn từng bước về cách sử dụng, lắp đặt hoặc chọn sản phẩm, phù hợp với nhu cầu của khách hàng."
+  },
+  {
+    "contentTypes": "Product Reviews",
+    "descriptionEN": "In-depth reviews of specific products, focusing on their performance, features, and pros and cons.",
+    "descriptionVN": "Đánh giá chi tiết các sản phẩm cụ thể, tập trung vào hiệu suất, tính năng và ưu nhược điểm của chúng."
+  },
+  {
+    "contentTypes": "Feature Comparisons",
+    "descriptionEN": "Side-by-side comparisons of similar products or features to help users decide which option best suits their needs.",
+    "descriptionVN": "So sánh từng tính năng của các sản phẩm hoặc tính năng tương tự để giúp người dùng quyết định lựa chọn phù hợp nhất."
+  },
+  {
+    "contentTypes": "Buyer’s Guides",
+    "descriptionEN": "A comprehensive guide that explains what to look for when buying a product and which options offer the best value for money.",
+    "descriptionVN": "Hướng dẫn toàn diện giải thích những gì cần tìm khi mua sản phẩm và những lựa chọn nào mang lại giá trị tốt nhất."
+  },
+  {
+    "contentTypes": "Troubleshooting Articles",
+    "descriptionEN": "Solutions to common problems users may encounter with products, helping them resolve issues without needing professional support.",
+    "descriptionVN": "Giải pháp cho các vấn đề phổ biến mà người dùng có thể gặp phải với sản phẩm, giúp họ giải quyết sự cố mà không cần sự hỗ trợ chuyên nghiệp."
+  },
+  {
+    "contentTypes": "Case Studies",
+    "descriptionEN": "Real-world examples of how customers or businesses have benefited from using the products, including results and feedback.",
+    "descriptionVN": "Các ví dụ thực tế về cách khách hàng hoặc doanh nghiệp đã hưởng lợi từ việc sử dụng sản phẩm, bao gồm kết quả và phản hồi."
+  },
+  {
+    "contentTypes": "Product Demonstrations",
+    "descriptionEN": "Video or visual content that shows how to use the products effectively, highlighting features, settings, and cleaning tips.",
+    "descriptionVN": "Nội dung video hoặc hình ảnh hướng dẫn cách sử dụng sản phẩm hiệu quả, làm nổi bật các tính năng, cài đặt và mẹo vệ sinh."
+  },
+  {
+    "contentTypes": "FAQ Articles",
+    "descriptionEN": "A collection of frequently asked questions to help clarify doubts and improve customer understanding.",
+    "descriptionVN": "Một bộ sưu tập các câu hỏi thường gặp giúp làm rõ những thắc mắc và cải thiện sự hiểu biết của khách hàng."
+  },
+  {
+    "contentTypes": "Expert Opinions",
+    "descriptionEN": "Insights or expert opinions on product quality, technology, or the future of kitchen appliances.",
+    "descriptionVN": "Nhận xét hoặc ý kiến của chuyên gia về chất lượng sản phẩm, công nghệ hoặc tương lai của thiết bị nhà bếp."
+  },
+  {
+    "contentTypes": "Product Roundups",
+    "descriptionEN": "Lists of top products in a specific category, featuring a brief description, advantages, and recommendations.",
+    "descriptionVN": "Danh sách các sản phẩm hàng đầu trong một danh mục cụ thể, kèm theo mô tả ngắn gọn, ưu điểm và khuyến nghị."
+  },
+  {
+    "contentTypes": "Customer Testimonials",
+    "descriptionEN": "Real customer reviews, showcasing their experiences with the product and why they recommend it.",
+    "descriptionVN": "Đánh giá từ khách hàng thực tế, giới thiệu trải nghiệm của họ với sản phẩm và lý do họ đề xuất sản phẩm."
+  },
+  {
+    "contentTypes": "Infographics",
+    "descriptionEN": "Visual representations of key product features, comparisons, or performance metrics that are easy to digest.",
+    "descriptionVN": "Biểu đồ hình ảnh mô tả các tính năng chính của sản phẩm, sự so sánh hoặc các chỉ số hiệu suất dễ hiểu."
+  },
+  {
+    "contentTypes": "Seasonal Content",
+    "descriptionEN": "Content focused on seasonal campaigns, special promotions, or product releases during specific times of the year.",
+    "descriptionVN": "Nội dung tập trung vào các chiến dịch mùa vụ, khuyến mãi đặc biệt hoặc phát hành sản phẩm vào các thời điểm cụ thể trong năm."
+  },
+  {
+    "contentTypes": "Maintenance Tips",
+    "descriptionEN": "Practical tips for maintaining the longevity and performance of the products.",
+    "descriptionVN": "Mẹo thực tế giúp duy trì độ bền và hiệu suất của sản phẩm."
+  },
+  {
+    "contentTypes": "Trend Reports",
+    "descriptionEN": "Insights into current trends in kitchen appliances and technology, positioning your brand as a thought leader.",
+    "descriptionVN": "Thông tin về các xu hướng hiện tại trong thiết bị nhà bếp và công nghệ, định vị thương hiệu của bạn như một người dẫn đầu trong lĩnh vực này."
+  },
+  {
+    "contentTypes": "Listicles",
+    "descriptionEN": "Present a list of products or services, which are often quick to read and popular with search engines for ranking.",
+    "descriptionVN": "Trình bày danh sách các sản phẩm hoặc dịch vụ, thường dễ đọc và được các công cụ tìm kiếm ưa chuộng để xếp hạng."
+  },
+  {
+    "contentTypes": "Customer Testimonials/Case Studies",
+    "descriptionEN": "Showcase real-life examples of how your products have benefited customers, providing social proof to build trust.",
+    "descriptionVN": "Trình bày các ví dụ thực tế về cách sản phẩm của bạn đã mang lại lợi ích cho khách hàng, cung cấp bằng chứng xã hội để xây dựng lòng tin."
+  },
+  {
+    "contentTypes": "FAQ (Frequently Asked Questions)",
+    "descriptionEN": "Address common customer inquiries, reduce hesitation, and provide clarity on product use or purchase.",
+    "descriptionVN": "Giải quyết các thắc mắc thường gặp của khách hàng, giảm sự do dự và cung cấp sự rõ ràng về cách sử dụng hoặc mua sản phẩm."
+  },
+  {
+    "contentTypes": "Product Tutorials and Demonstrations",
+    "descriptionEN": "Step-by-step guides showing how to use the product effectively. Can be in the form of written or video content.",
+    "descriptionVN": "Hướng dẫn từng bước về cách sử dụng sản phẩm hiệu quả. Có thể dưới dạng nội dung viết hoặc video."
+  },
+  {
+    "contentTypes": "Maintenance and Troubleshooting Guides",
+    "descriptionEN": "Help customers keep their products in good condition and extend their lifespan, improving customer satisfaction.",
+    "descriptionVN": "Giúp khách hàng duy trì sản phẩm trong tình trạng tốt và kéo dài tuổi thọ của chúng, nâng cao sự hài lòng của khách hàng."
+  },
+  {
+    "contentTypes": "Industry Insights and Trends",
+    "descriptionEN": "Provide in-depth articles discussing broader industry trends, showing thought leadership and keeping your audience informed.",
+    "descriptionVN": "Cung cấp các bài viết sâu sắc thảo luận về các xu hướng ngành rộng lớn, thể hiện tư duy lãnh đạo và giữ cho khán giả của bạn được thông tin."
+  },
+  {
+    "contentTypes": "Product Benefits and Features Explainers",
+    "descriptionEN": "Highlight the unique features of a product, explaining how they address customer pain points or needs.",
+    "descriptionVN": "Nổi bật các tính năng đặc biệt của sản phẩm, giải thích cách chúng giải quyết các vấn đề hoặc nhu cầu của khách hàng."
+  },
+  {
+    "contentTypes": "Sustainability and Eco-friendly Content",
+    "descriptionEN": "Address the environmental impact and energy efficiency of the product, appealing to eco-conscious customers.",
+    "descriptionVN": "Giải quyết tác động môi trường và hiệu quả năng lượng của sản phẩm, thu hút khách hàng quan tâm đến bảo vệ môi trường."
+  },
+  {
+    "contentTypes": "Interactive Quizzes or Product Finders",
+    "descriptionEN": "Offer a fun and engaging way for visitors to find the perfect product for their needs, increasing interaction with your site.",
+    "descriptionVN": "Cung cấp một cách thú vị và hấp dẫn để khách truy cập tìm thấy sản phẩm hoàn hảo cho nhu cầu của họ, tăng tương tác với trang web của bạn."
+  }
+]

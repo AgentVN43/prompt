@@ -1,0 +1,112 @@
+[
+  {
+    "task_id": 1,
+    "task_name": "Phân tích thông tin sản phẩm/dịch vụ",
+    "description": "Phân tích tên, mô tả, điểm bán hàng độc đáo (USP), và khoảng giá của sản phẩm/dịch vụ."
+  },
+  {
+    "task_id": 2,
+    "task_name": "Xác định đối tượng mục tiêu",
+    "description": "Phân tích độ tuổi, giới tính, vị trí địa lý, và sở thích của khách hàng mục tiêu."
+  },
+  {
+    "task_id": 3,
+    "task_name": "Xác định mục tiêu kinh doanh",
+    "description": "Xác định mục tiêu chính và phụ, cùng các chỉ số KPI cụ thể."
+  },
+  {
+    "task_id": 4,
+    "task_name": "Phân tích đối thủ cạnh tranh",
+    "description": "Phân tích điểm mạnh và điểm yếu của các đối thủ chính."
+  },
+  {
+    "task_id": 5,
+    "task_name": "Đánh giá hiện trạng marketing hiện tại",
+    "description": "Đánh giá các kênh marketing hiện tại, hiệu suất hiện tại, và ngân sách."
+  },
+  {
+    "task_id": 6,
+    "task_name": "Đề xuất kênh digital marketing ưu tiên",
+    "description": "Đề xuất các kênh digital marketing phù hợp dựa trên thông tin được cung cấp."
+  },
+  {
+    "task_id": 7,
+    "task_name": "Xây dựng chiến lược nội dung",
+    "description": "Đề xuất loại nội dung và giọng văn phù hợp với thương hiệu."
+  },
+  {
+    "task_id": 8,
+    "task_name": "Phân bổ ngân sách",
+    "description": "Đề xuất cách phân bổ ngân sách cho các kênh digital marketing."
+  },
+  {
+    "task_id": 9,
+    "task_name": "Xây dựng timeline triển khai",
+    "description": "Đề xuất timeline triển khai chiến dịch dựa trên thời gian được cung cấp."
+  },
+  {
+    "task_id": 10,
+    "task_name": "Đề xuất công cụ đo lường và KPI",
+    "description": "Đề xuất các công cụ đo lường hiệu suất và các chỉ số KPI cần theo dõi."
+  },
+  {
+    "task_id": 11,
+    "task_name": "Đề xuất chiến lược cạnh tranh",
+    "description": "Đề xuất chiến lược để vượt mặt đối thủ dựa trên phân tích điểm mạnh và điểm yếu của họ."
+  },
+  {
+    "task_id": 12,
+    "task_name": "Tối ưu hóa trải nghiệm người dùng",
+    "description": "Đề xuất cách tối ưu hóa website và các kênh digital để cải thiện trải nghiệm người dùng."
+  },
+  {
+    "task_id": 13,
+    "task_name": "Đề xuất chiến lược quảng cáo",
+    "description": "Đề xuất chiến lược quảng cáo trên các kênh ưu tiên như Facebook Ads, Google Ads, TikTok."
+  },
+  {
+    "task_id": 14,
+    "task_name": "Đề xuất chiến lược SEO",
+    "description": "Đề xuất chiến lược SEO để tăng khả năng hiển thị trên công cụ tìm kiếm."
+  },
+  {
+    "task_id": 15,
+    "task_name": "Đề xuất chiến lược social media",
+    "description": "Đề xuất chiến lược quản lý và tăng tương tác trên các nền tảng mạng xã hội."
+  },
+  {
+    "task_id": 16,
+    "task_name": "Đề xuất chiến lược email marketing",
+    "description": "Đề xuất chiến lược email marketing để nuôi dưỡng khách hàng tiềm năng."
+  },
+  {
+    "task_id": 17,
+    "task_name": "Đề xuất chiến lược influencer marketing",
+    "description": "Đề xuất chiến lược hợp tác với người có ảnh hưởng để quảng bá sản phẩm/dịch vụ."
+  },
+  {
+    "task_id": 18,
+    "task_name": "Đề xuất chiến lược affiliate marketing",
+    "description": "Đề xuất chiến lược affiliate marketing để mở rộng phạm vi tiếp cận."
+  },
+  {
+    "task_id": 19,
+    "task_name": "Đề xuất chiến lược A/B testing",
+    "description": "Đề xuất chiến lược A/B testing để tối ưu hóa hiệu quả chiến dịch."
+  },
+  {
+    "task_id": 20,
+    "task_name": "Tổng hợp và báo cáo chiến lược",
+    "description": "Tổng hợp tất cả các đề xuất và trình bày chiến lược digital marketing tổng thể."
+  },
+  {
+    "task_id": 21,
+    "task_name": "Xây dựng một chiến lược digital marketing tổng thể",
+    "description": "Xây dựng một chiến lược digital marketing tổng thể bao gồm các kênh chính, nội dung và timeline."
+  },
+  {
+    "task_id": 22,
+    "task_name": "Chiến lược xây dựng thương hiệu hiệu quả",
+    "description": "Chiến lược xây dựng thương hiệu và định vị hiệu quả"
+  }
+]

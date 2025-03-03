@@ -1,0 +1,17 @@
+{
+    "projects": [
+      {
+        "name": "bepphugia",
+        "domain": "https://beptudoi.com",
+        "consumerKey": "ck_a42c6926c916de32fd2b510778d76f6d001524da",
+        "consumerSecret": "cs_303547b5f7fdd354d30cafbbc357141125b61458"
+      },
+      {
+        "name": "Project 2",
+        "domain": "https://project2.com",
+        "username": "admin2",
+        "password": "pass2"
+      }
+    ]
+  }
+  
