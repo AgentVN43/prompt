@@ -3,6 +3,7 @@ import { Menu, Layout, Typography } from "antd";
 import CreateContent from "../../components/CreateContent/Content";
 import MultipleOpen from "../../components/MultipleOpen";
 import DigitalMarketing from "../../components/Business/DigitalMarketing";
+import RankMath from "../../components/rankmath";
 
 const { Header, Content } = Layout;
 
@@ -10,6 +11,7 @@ const menuItems = [
   { key: "1", label: "Create Content for SEO", component: <CreateContent /> },
   { key: "2", label: "Multiple Open Tabs", component: <MultipleOpen /> },
   { key: "3", label: "Digital Marketing", component: <DigitalMarketing /> },
+  { key: "4", label: "Cotent Wordpress", component: <RankMath /> },
 ];
 
 export default function Home() {

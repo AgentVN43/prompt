@@ -10,9 +10,11 @@ import {
   Col,
   Collapse,
   Spin,
+  Select,
 } from "antd";
 import axios from "axios";
 import Prompt from "../prompt";
+const { Option } = Select;
 
 const defaultFooterContent = `<hr/><p data-sourcepos="54:1-54:293"><strong>0968 369 012 ( ZALO - Mr. Phú)
 </strong>Đ/c: 461 Hiệp Thành 13, P. Hiệp Thành, Quận 12</p>
@@ -47,14 +49,22 @@ const RankMath = () => {
 
   const [loadingModal, setLoadingModal] = useState([]);
   const [productURL, setProductURL] = useState([]);
+  const [credentials, setCredentials] = useState({
+    username: "",
+    password: "",
+  });
 
-  const consumerKey = "ck_a42c6926c916de32fd2b510778d76f6d001524da";
-  const consumerSecret = "cs_303547b5f7fdd354d30cafbbc357141125b61458";
+  // const consumerKey = "ck_a42c6926c916de32fd2b510778d76f6d001524da";
+  // const consumerSecret = "cs_303547b5f7fdd354d30cafbbc357141125b61458";
 
-    // Domain: tongkhotranganh.com
-    // const consumerKey = "ck_9def12a4fc696d8380e542d22149c09a3d845b89";
-    // const consumerSecret = "cs_024f4a39f661bbe508d6eb7df7331cc46e3bd3ea";
-    
+  // // Domain: tongkhotranganh.com
+  const consumerKey = "ck_6dbd444b3b21ac5405869054c3b021b7e2f32e5f";
+  const consumerSecret = "cs_b28ca5284df36150f116b95cc1759af6753fd225";
+
+  // Domain: bepphugia
+  // const consumerKey = "ck_da8e1b8c5b54e398e4d0303789dd9a4b13015903";
+  // const consumerSecret = "cs_a874581785faafcafe9ba8c433aeeb1f36d51235";
+
   // Fetch products for a specific page
   const fetchProducts = async (page = 1) => {
     setLoading(true);
@@ -69,12 +79,15 @@ const RankMath = () => {
         }
       );
 
+      console.log(response.data);
+
       const filteredProducts = response.data.filter((product) => {
         const seoScore = product.meta_data.find(
           (meta) => meta.key === "rank_math_seo_score"
         );
         return seoScore && parseInt(seoScore.value, 10) < 70;
       });
+      console.log(filteredProducts);
 
       setProducts(filteredProducts);
       setPagination({
@@ -91,6 +104,8 @@ const RankMath = () => {
 
   // Handle table pagination change
   const handleTableChange = (pagination) => {
+    console.log("Page changed:", pagination.current);
+
     fetchProducts(pagination.current);
   };
 
@@ -243,6 +258,26 @@ const RankMath = () => {
     }, 6000);
   };
 
+  const credentialsList = process.env.REACT_APP_CREDENTIALS
+    ? process.env.REACT_APP_CREDENTIALS.split(";").map((entry) => {
+        const [domain, username, password] = entry.split(",");
+        return { domain, username, password };
+      })
+    : [];
+
+  const handleChange = (selectedDomain) => {
+    const selectedCredentials = credentialsList.find(
+      (item) => item.domain === selectedDomain
+    );
+    if (selectedCredentials) {
+      setDomain(selectedDomain);
+      setCredentials({
+        username: selectedCredentials.username,
+        password: selectedCredentials.password,
+      });
+    }
+  };
+
   return (
     <div style={{ padding: "20px" }}>
       <Input
@@ -251,6 +286,17 @@ const RankMath = () => {
         onChange={(e) => setDomain(e.target.value)}
         style={{ marginBottom: "20px" }}
       />
+      <Select
+        placeholder="Select a domain"
+        style={{ width: "100%", marginBottom: "20px" }}
+        onChange={handleChange}
+      >
+        {credentialsList.map((item) => (
+          <Option key={item.domain} value={item.domain}>
+            {item.domain}
+          </Option>
+        ))}
+      </Select>
       <Button
         type="primary"
         onClick={() => fetchProducts(1)}
