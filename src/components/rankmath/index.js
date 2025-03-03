@@ -58,8 +58,8 @@ const RankMath = () => {
   // const consumerSecret = "cs_303547b5f7fdd354d30cafbbc357141125b61458";
 
   // // Domain: tongkhotranganh.com
-  const consumerKey = "ck_6dbd444b3b21ac5405869054c3b021b7e2f32e5f";
-  const consumerSecret = "cs_b28ca5284df36150f116b95cc1759af6753fd225";
+  // const consumerKey = "ck_6dbd444b3b21ac5405869054c3b021b7e2f32e5f";
+  // const consumerSecret = "cs_b28ca5284df36150f116b95cc1759af6753fd225";
 
   // Domain: bepphugia
   // const consumerKey = "ck_da8e1b8c5b54e398e4d0303789dd9a4b13015903";
@@ -73,8 +73,8 @@ const RankMath = () => {
         `${domain}/wp-json/wc/v3/products?page=${page}`,
         {
           auth: {
-            username: consumerKey,
-            password: consumerSecret,
+            username: credentials.username,
+            password: credentials.password,
           },
         }
       );
@@ -128,8 +128,8 @@ const RankMath = () => {
         const response = await axios.get(`${domain}/wp-json/wc/v3/products`, {
           params: { page, per_page: 100 }, // Adjust per_page as needed
           auth: {
-            username: consumerKey,
-            password: consumerSecret,
+            username: credentials.username,
+            password: credentials.password,
           },
         });
 
@@ -173,8 +173,8 @@ const RankMath = () => {
         },
         {
           auth: {
-            username: consumerKey,
-            password: consumerSecret,
+            username: credentials.username,
+            password: credentials.password,
           },
         }
       );
