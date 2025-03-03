@@ -3,7 +3,6 @@ import { Menu, Layout, Typography } from "antd";
 import CreateContent from "../../components/CreateContent/Content";
 import MultipleOpen from "../../components/MultipleOpen";
 import DigitalMarketing from "../../components/Business/DigitalMarketing";
-import RankMath from "../../components/RankMath";
 
 const { Header, Content } = Layout;
 
