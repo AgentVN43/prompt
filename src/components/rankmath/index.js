@@ -537,6 +537,7 @@ const RankMath = () => {
                   <Prompt
                     name={currentProduct.name}
                     keywords={rankMathDescription}
+                    description={currentProduct.description}
                   />
                 </Col>
               </Row>

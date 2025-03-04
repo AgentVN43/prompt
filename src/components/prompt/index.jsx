@@ -42,7 +42,7 @@ const items = [
   },
 ];
 
-export default function Prompt({name, keywords}) {
+export default function Prompt({name, keywords, description}) {
   const [selectedAction, setSelectedAction] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("");
   const [selectedTone, setSelectedTone] = useState("");
@@ -56,7 +56,7 @@ export default function Prompt({name, keywords}) {
   const combineSelections = () => {
     return `You are an expert in contet marketing. 
 ${selectedAction} SEO content for the web using in ${selectedLanguage} with 
-a Product: "${name}" Keyword: "${keywords}" 
+a Product: "${name}" Keyword: "${keywords}" About: "${description}".
 Complete sections according to the following structure and standards: 
 1. Goal: ${selectedTone}  
 2. Outline: ${selectedOutline} 
