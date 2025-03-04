@@ -436,8 +436,10 @@ const RankMath = () => {
                   defaultFooterContent || ""
                 }`;
 
+                const { images, ...rest } = values;
+
                 const updatedProduct = {
-                  ...values,
+                  ...rest,
                   description: completeDescription, // Replace the description field with the combined value
                 };
 
