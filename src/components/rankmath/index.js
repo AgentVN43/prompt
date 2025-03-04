@@ -243,7 +243,7 @@ const RankMath = () => {
     }
   }, [currentProduct, form]);
 
-  const handleAddImage = () => {
+  const handleAddImage = (name) => {
     const currentDesc = form.getFieldValue("description") || "";
     const imgSrc = form.getFieldValue("images");
     if (imgSrc && descriptionRef.current) {
@@ -254,7 +254,7 @@ const RankMath = () => {
         const endPos = textarea.selectionEnd;
         const before = currentDesc.substring(0, startPos);
         const after = currentDesc.substring(endPos);
-        const insertHTML = `<img src="${imgSrc}" alt="Product Image" />`;
+        const insertHTML = `<img src="${imgSrc}" alt="${name}" />`;
         const newDesc = before + insertHTML + after;
         form.setFieldsValue({ description: newDesc });
         // Đưa con trỏ về sau đoạn chèn
@@ -353,28 +353,7 @@ const RankMath = () => {
       }
     }, [currentProduct, form]);
 
-    // Hàm chèn HTML hình ảnh vào vị trí con trỏ trong TextArea của Description
-    const handleAddImage = () => {
-      const currentDesc = form.getFieldValue("description") || "";
-      const imgSrc = form.getFieldValue("images");
-      if (imgSrc && descriptionRef.current) {
-        // Truy cập DOM TextArea của Ant Design Input.TextArea
-        const textarea = descriptionRef.current.resizableTextArea?.textArea;
-        if (textarea) {
-          const startPos = textarea.selectionStart;
-          const endPos = textarea.selectionEnd;
-          const before = currentDesc.substring(0, startPos);
-          const after = currentDesc.substring(endPos);
-          const insertHTML = `<img src="${imgSrc}" alt="Product Image" />`;
-          const newDesc = before + insertHTML + after;
-          form.setFieldsValue({ description: newDesc });
-          // Đưa con trỏ về sau đoạn chèn
-          textarea.focus();
-          const cursorPos = startPos + insertHTML.length;
-          textarea.setSelectionRange(cursorPos, cursorPos);
-        }
-      }
-    };
+  
   };
 
   return (
@@ -467,12 +446,7 @@ const RankMath = () => {
               initialValues={{
                 name: currentProduct.name,
                 slug: currentProduct.slug,
-                // description: currentProduct.description,
-                description: `${currentProduct.description || ""}\n\n${
-                  currentProduct.images?.length > 0
-                    ? `<img src="${currentProduct.images[0].src}" alt="Product Image" />`
-                    : ""
-                }`,
+                description: currentProduct.description,
                 images:
                   currentProduct.images?.length > 0
                     ? currentProduct.images[0].src
@@ -539,7 +513,7 @@ const RankMath = () => {
                   >
                     <Input disabled />
                   </Form.Item>
-                  <Button type="primary" onClick={handleAddImage}>
+                  <Button type="primary" onClick={() => handleAddImage(currentProduct.name)}>
                     Add Image to Description
                   </Button>
                 </Col>
