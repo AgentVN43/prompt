@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Table,
   Button,
@@ -225,7 +225,7 @@ const RankMath = () => {
       ),
     },
   ];
-
+  const descriptionRef = useRef(null);
   useEffect(() => {
     if (currentProduct) {
       form.setFieldsValue({
@@ -242,6 +242,28 @@ const RankMath = () => {
       form.resetFields(); // Reset fields if no current product
     }
   }, [currentProduct, form]);
+
+  const handleAddImage = () => {
+    const currentDesc = form.getFieldValue("description") || "";
+    const imgSrc = form.getFieldValue("images");
+    if (imgSrc && descriptionRef.current) {
+      // Truy cập DOM TextArea của Ant Design Input.TextArea
+      const textarea = descriptionRef.current.resizableTextArea?.textArea;
+      if (textarea) {
+        const startPos = textarea.selectionStart;
+        const endPos = textarea.selectionEnd;
+        const before = currentDesc.substring(0, startPos);
+        const after = currentDesc.substring(endPos);
+        const insertHTML = `<img src="${imgSrc}" alt="Product Image" />`;
+        const newDesc = before + insertHTML + after;
+        form.setFieldsValue({ description: newDesc });
+        // Đưa con trỏ về sau đoạn chèn
+        textarea.focus();
+        const cursorPos = startPos + insertHTML.length;
+        textarea.setSelectionRange(cursorPos, cursorPos);
+      }
+    }
+  };
 
   const enterLoading = (index) => {
     setLoadingModal((prevLoadings) => {
@@ -276,6 +298,83 @@ const RankMath = () => {
         password: selectedCredentials.password,
       });
     }
+  };
+
+  useEffect(() => {
+    if (currentProduct) {
+      form.resetFields();
+      form.setFieldsValue({
+        name: currentProduct.name,
+        slug: currentProduct.slug,
+        description: currentProduct.description,
+        images:
+          currentProduct.images?.length > 0 ? currentProduct.images[0].src : "",
+        short_description: currentProduct.short_description,
+        rank_math_focus_keyword:
+          currentProduct.meta_data.find(
+            (meta) => meta.key === "rank_math_focus_keyword"
+          )?.value || "",
+        // Nếu cần, bạn cũng có thể cập nhật rank_math_description hoặc footer
+      });
+    }
+  }, [currentProduct, form]);
+
+  const EditProductModal = ({
+    modalVisible,
+    setModalVisible,
+    currentProduct,
+    updateProduct,
+    defaultFooterContent,
+    loadingModal,
+    enterLoading,
+  }) => {
+    const [form] = Form.useForm();
+    // Sử dụng ref để truy cập Input.TextArea của Description
+    const descriptionRef = useRef(null);
+
+    // Cập nhật form mỗi khi currentProduct thay đổi
+    useEffect(() => {
+      if (currentProduct) {
+        form.resetFields();
+        form.setFieldsValue({
+          name: currentProduct.name,
+          slug: currentProduct.slug,
+          description: currentProduct.description,
+          images:
+            currentProduct.images?.length > 0
+              ? currentProduct.images[0].src
+              : "",
+          short_description: currentProduct.short_description,
+          rank_math_focus_keyword:
+            currentProduct.meta_data.find(
+              (meta) => meta.key === "rank_math_focus_keyword"
+            )?.value || "",
+        });
+      }
+    }, [currentProduct, form]);
+
+    // Hàm chèn HTML hình ảnh vào vị trí con trỏ trong TextArea của Description
+    const handleAddImage = () => {
+      const currentDesc = form.getFieldValue("description") || "";
+      const imgSrc = form.getFieldValue("images");
+      if (imgSrc && descriptionRef.current) {
+        // Truy cập DOM TextArea của Ant Design Input.TextArea
+        const textarea = descriptionRef.current.resizableTextArea?.textArea;
+        if (textarea) {
+          const startPos = textarea.selectionStart;
+          const endPos = textarea.selectionEnd;
+          const before = currentDesc.substring(0, startPos);
+          const after = currentDesc.substring(endPos);
+          const insertHTML = `<img src="${imgSrc}" alt="Product Image" />`;
+          const newDesc = before + insertHTML + after;
+          form.setFieldsValue({ description: newDesc });
+          // Đưa con trỏ về sau đoạn chèn
+          textarea.focus();
+          const cursorPos = startPos + insertHTML.length;
+          textarea.setSelectionRange(cursorPos, cursorPos);
+        }
+      }
+    };
   };
 
   return (
@@ -349,6 +448,7 @@ const RankMath = () => {
         >
           {currentProduct && (
             <Form
+              key={currentProduct.id}
               layout="vertical"
               form={form}
               onFinish={(values) => {
@@ -367,7 +467,16 @@ const RankMath = () => {
               initialValues={{
                 name: currentProduct.name,
                 slug: currentProduct.slug,
-                description: currentProduct.description,
+                // description: currentProduct.description,
+                description: `${currentProduct.description || ""}\n\n${
+                  currentProduct.images?.length > 0
+                    ? `<img src="${currentProduct.images[0].src}" alt="Product Image" />`
+                    : ""
+                }`,
+                images:
+                  currentProduct.images?.length > 0
+                    ? currentProduct.images[0].src
+                    : "",
                 short_description: currentProduct.short_description,
                 rank_math_focus_keyword:
                   currentProduct.meta_data.find(
@@ -400,7 +509,7 @@ const RankMath = () => {
                     name="description"
                     rules={[{ required: true }]}
                   >
-                    <Input.TextArea rows={4} />
+                    <Input.TextArea rows={4} ref={descriptionRef} />
                   </Form.Item>
                 </Col>
                 <Col span={12}>
@@ -421,6 +530,18 @@ const RankMath = () => {
                   >
                     <Input.TextArea rows={4} />
                   </Form.Item>
+                </Col>
+                <Col span={12}>
+                  <Form.Item
+                    label="Images"
+                    name="images"
+                    rules={[{ required: true }]}
+                  >
+                    <Input disabled />
+                  </Form.Item>
+                  <Button type="primary" onClick={handleAddImage}>
+                    Add Image to Description
+                  </Button>
                 </Col>
                 <Col span={12}>
                   <Form.Item label="Footer Content" name="footer">
