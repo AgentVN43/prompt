@@ -14,22 +14,8 @@ import {
 } from "antd";
 import axios from "axios";
 import Prompt from "../prompt";
+import footer from "../../constants/defaultFooter/defaultFooter.json";
 const { Option } = Select;
-
-const defaultFooterContent = `<hr/><p data-sourcepos="54:1-54:293"><strong>0968 369 012 ( ZALO - Mr. Phú)
-</strong>Đ/c: 461 Hiệp Thành 13, P. Hiệp Thành, Quận 12</p>
-<p data-sourcepos="54:1-54:293">Cam kết hàng chính hãng, bảo hành chính hãng.</p>
-<p data-sourcepos="54:1-54:293"><span class="html-span xexx8yu x4uap5 x18d9i69 xkhd6sd x1hl2dhg x16tdsg8 x1vvkbs x3nfvp2 x1j61x8r x1fcty0u xdj266r xat24cr xgzva0m xhhsvwb xxymvpz xlup9mm x1kky2od"><img class="xz74otr" src="https://static.xx.fbcdn.net/images/emoji.php/v9/t9e/1/16/27a1.png" alt="➡️" width="16" height="16" /></span> Miễn phí vận chuyển thành phố Hồ Chí Minh (Khu vực khác tùy theo đơn hàng)
-<span class="html-span xexx8yu x4uap5 x18d9i69 xkhd6sd x1hl2dhg x16tdsg8 x1vvkbs x3nfvp2 x1j61x8r x1fcty0u xdj266r xat24cr xgzva0m xhhsvwb xxymvpz xlup9mm x1kky2od"><img class="xz74otr" src="https://static.xx.fbcdn.net/images/emoji.php/v9/t9e/1/16/27a1.png" alt="➡️" width="16" height="16" /></span> Nhận giao hàng và thanh toán tại nhà ở Hồ Chí Minh
-<span class="html-span xexx8yu x4uap5 x18d9i69 xkhd6sd x1hl2dhg x16tdsg8 x1vvkbs x3nfvp2 x1j61x8r x1fcty0u xdj266r xat24cr xgzva0m xhhsvwb xxymvpz xlup9mm x1kky2od"><img class="xz74otr" src="https://static.xx.fbcdn.net/images/emoji.php/v9/t8d/1/16/2611.png" alt="☑" width="16" height="16" /></span> Hàng chính hãng <span class="html-span xexx8yu x4uap5 x18d9i69 xkhd6sd x1hl2dhg x16tdsg8 x1vvkbs x3nfvp2 x1j61x8r x1fcty0u xdj266r xat24cr xgzva0m xhhsvwb xxymvpz xlup9mm x1kky2od"><img class="xz74otr" src="https://static.xx.fbcdn.net/images/emoji.php/v9/t8d/1/16/2611.png" alt="☑" width="16" height="16" /></span> Dịch vụ tốt nhất <span class="html-span xexx8yu x4uap5 x18d9i69 xkhd6sd x1hl2dhg x16tdsg8 x1vvkbs x3nfvp2 x1j61x8r x1fcty0u xdj266r xat24cr xgzva0m xhhsvwb xxymvpz xlup9mm x1kky2od"><img class="xz74otr" src="https://static.xx.fbcdn.net/images/emoji.php/v9/t8d/1/16/2611.png" alt="☑" width="16" height="16" /></span>Giá rẻ nhất</p>
-<p data-sourcepos="54:1-54:293"><strong>Sỉ lẻ toàn quốc, sẵn hàng số lượng lớn, giá tốt</strong></p>
-<p data-sourcepos="54:1-54:293"><strong><a href="https://beptudoi.com/">Fuger</a>:
-</strong><strong><a href="https://beptudoi.com/bep-Fuger/bep-tu-cong-nghiep/">Bếp từ công nghiệp</a>
-<a href="https://beptudoi.com/bep-Fuger/bep-tu-duong/">Bếp từ đơn</a>
-<a href="https://beptudoi.com/bep-Fuger/bep-tu/">Bếp từ đôi</a>
-<a href="https://beptudoi.com/bep-Fuger/may-hut-mui/">Máy hút mùi</a></strong></p>
-<p data-sourcepos="54:1-54:293"><strong><a href="https://zalo.me/0968369012">0968 369 012 ( ZALO - Mr. Phú)</a>
-</strong>Đ/c: 461 Hiệp Thành 13, P. Hiệp Thành, Quận 12</p>`;
 
 const RankMath = () => {
   const [domain, setDomain] = useState("");
@@ -46,6 +32,9 @@ const RankMath = () => {
     pageSize: 10,
     total: 0,
   });
+  const defaultFooterContent = footer.defaultFooter;
+
+  console.log(defaultFooterContent);
 
   const [loadingModal, setLoadingModal] = useState([]);
   const [productURL, setProductURL] = useState([]);
@@ -352,8 +341,6 @@ const RankMath = () => {
         });
       }
     }, [currentProduct, form]);
-
-  
   };
 
   return (
@@ -515,7 +502,10 @@ const RankMath = () => {
                   >
                     <Input disabled />
                   </Form.Item>
-                  <Button type="primary" onClick={() => handleAddImage(currentProduct.name)}>
+                  <Button
+                    type="primary"
+                    onClick={() => handleAddImage(currentProduct.name)}
+                  >
                     Add Image to Description
                   </Button>
                 </Col>
