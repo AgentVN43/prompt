@@ -32,9 +32,9 @@ const RankMath = () => {
     pageSize: 10,
     total: 0,
   });
+  
   const defaultFooterContent = footer.defaultFooter;
 
-  console.log(defaultFooterContent);
 
   const [loadingModal, setLoadingModal] = useState([]);
   const [productURL, setProductURL] = useState([]);

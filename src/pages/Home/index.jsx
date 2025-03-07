@@ -4,6 +4,8 @@ import CreateContent from "../../components/CreateContent/Content";
 import MultipleOpen from "../../components/MultipleOpen";
 import DigitalMarketing from "../../components/Business/DigitalMarketing";
 import RankMath from "../../components/rankmath";
+import Aigentext from "../../components/Aigentext/Aigentext";
+import SEOchecker from "../../components/SEOchecker/SEOchecker";
 
 const { Header, Content } = Layout;
 
@@ -12,6 +14,8 @@ const menuItems = [
   { key: "2", label: "Multiple Open Tabs", component: <MultipleOpen /> },
   { key: "3", label: "Digital Marketing", component: <DigitalMarketing /> },
   { key: "4", label: "Cotent Wordpress", component: <RankMath /> },
+  { key: "5", label: "Cotent AI", component: <Aigentext /> },
+  { key: "6", label: "Check SEO", component: <SEOchecker /> },
 ];
 
 export default function Home() {
