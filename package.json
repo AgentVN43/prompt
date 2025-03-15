@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^5.22.1",
     "axios": "^1.7.9",
+    "file-saver": "^2.0.5",
     "puppeteer": "^23.5.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
