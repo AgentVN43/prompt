@@ -41,13 +41,33 @@ const items = [
       "Trả hàng dễ dàng, cá nhân hóa, dịch vụ khách hàng tuyệt vời hoặc thậm chí là tư vấn và lựa chọn sản phẩm và hàng hóa được tuyển chọn kỹ lưỡng",
   },
 ];
+// Hàm chọn ngẫu nhiên một key từ object
+const getRandomKey = (seoOptions) => {
+  const keys = Object.keys(seoOptions);
+  return seoOptions[keys[Math.floor(Math.random() * keys.length)]];
+};
 
-export default function Prompt({name, keywords, description}) {
-  const [selectedAction, setSelectedAction] = useState("");
-  const [selectedLanguage, setSelectedLanguage] = useState("");
-  const [selectedTone, setSelectedTone] = useState("");
-  const [selectedOutline, setSelectedOutline] = useState("");
-  const [selectModel, setSelectedModel] = useState("");
+
+
+export default function Prompt({ name, keywords, description }) {
+  const handleRadomOption = () => {
+    const defaultTone = getRandomKey(toneJson);
+    const defaultOUtline = getRandomKey(outlineJson);
+    const defaultmodel = getRandomKey(modelJson)
+    return { defaultTone, defaultOUtline, defaultmodel }
+  }
+
+  const handleclickRandomOption = () => {
+    const test = handleRadomOption()
+    setSelectedTone(test.defaultTone)
+    setSelectedOutline(test.defaultOUtline)
+    setSelectedModel(test.defaultmodel)
+  }
+  const [selectedAction, setSelectedAction] = useState(actionJson[1]);
+  const [selectedLanguage, setSelectedLanguage] = useState(languageJson['vietnamese']);
+  const [selectedTone, setSelectedTone] = useState('');
+  const [selectedOutline, setSelectedOutline] = useState('');
+  const [selectModel, setSelectedModel] = useState('');
 
   const [product, setProduct] = useState("");
   const [keyword, setKeyword] = useState("");
@@ -92,10 +112,14 @@ making the text engaging, clear, and relatable.
           <Row gutter={16}>
             <Col span={8}>
               <Title level={4}>Select Options</Title>
+
+              <Button onClick={() => handleclickRandomOption()}>Random Option</Button>
+              {/* action */}
               <Select
                 style={{ width: "100%", marginBottom: 16 }}
                 placeholder="Select Action"
                 onChange={(value) => setSelectedAction(value)}
+                defaultValue={actionJson[1]}
               >
                 {Object.entries(actionJson).map(([key, action]) => (
                   <Option key={key} value={action}>
@@ -103,10 +127,12 @@ making the text engaging, clear, and relatable.
                   </Option>
                 ))}
               </Select>
+              {/* language */}
               <Select
                 style={{ width: "100%", marginBottom: 16 }}
                 placeholder="Select Language"
                 onChange={(value) => setSelectedLanguage(value)}
+                defaultValue={languageJson['vietnamese']}
               >
                 {Object.entries(languageJson).map(([key, language]) => (
                   <Option key={key} value={language}>
@@ -114,10 +140,12 @@ making the text engaging, clear, and relatable.
                   </Option>
                 ))}
               </Select>
+              {/* tone */}
               <Select
                 style={{ width: "100%", marginBottom: 16 }}
                 placeholder="Select Tone"
                 onChange={(value) => setSelectedTone(value)}
+                value={selectedTone}
               >
                 {Object.entries(toneJson).map(([key, tone]) => (
                   <Option key={key} value={tone}>
@@ -125,10 +153,12 @@ making the text engaging, clear, and relatable.
                   </Option>
                 ))}
               </Select>
+              {/* outline */}
               <Select
                 style={{ width: "100%", marginBottom: 16 }}
                 placeholder="Select Outline"
                 onChange={(value) => setSelectedOutline(value)}
+                value={selectedOutline}
               >
                 {Object.entries(outlineJson).map(([key, outline]) => (
                   <Option key={key} value={outline}>
@@ -136,10 +166,12 @@ making the text engaging, clear, and relatable.
                   </Option>
                 ))}
               </Select>
+              {/* model */}
               <Select
                 style={{ width: "100%", marginBottom: 16 }}
                 placeholder="Select Model"
                 onChange={(value) => setSelectedModel(value)}
+                value={selectModel}
               >
                 {Object.entries(modelJson).map(([key, model]) => (
                   <Option key={key} value={model}>
@@ -182,7 +214,6 @@ making the text engaging, clear, and relatable.
               />
             </Col>
             <Col span={16}>
-             
               <Title level={4}>Your Selection:</Title>
               <Paragraph>{combineSelections()}</Paragraph>
               <Button
