@@ -4,6 +4,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const GeminiAdGenerator = () => {
     const [ads, setAds] = useState([]);
+    console.log("🚀 ~ GeminiAdGenerator ~ ads:", ads)
     const [loading, setLoading] = useState(false);
 
     const formatData = (key, values) =>
@@ -12,7 +13,7 @@ const GeminiAdGenerator = () => {
     const generatePrompt = () => {
         return `
       Dựa trên các key trong bảng (Sản phẩm, Local, Need, Price, People, Trend, Promotion) bên dưới.
-      Hãy tạo 52 tiêu đề bài viết hấp dẫn ngắn gọn cho một web site đại lý bán hàng
+      Hãy tạo 10 tiêu đề bài viết hấp dẫn ngắn gọn cho một web site đại lý bán hàng
       ${formatData("Sản phẩm", backupData.product)}
       ${formatData("Khu vực", backupData.localtion)}
       ${formatData("Nhu cầu", backupData.need)}
@@ -21,7 +22,7 @@ const GeminiAdGenerator = () => {
       ${formatData("Xu hướng", backupData.trend)}
       ${formatData("Khuyến mãi", backupData.promotion)}
       Lưu ý hãy đảm bảo mỗi key đều được sử dụng ít nhất 1 lần. 
-      Kết quả cuối cùng chỉ hiển thị đúng 52 tiêu đề cách nhau 1 dấu ,
+      Kết quả cuối cùng chỉ hiển thị đúng 10 tiêu đề cách nhau 1 dấu ;
     `;
     };
     // Kết quả cuối cùng chỉ hiển thị đúng 52 tiêu đề, mỗi tiêu đề trên 1 dòng
@@ -37,8 +38,9 @@ const GeminiAdGenerator = () => {
             console.log("🚀 ~ fetchAIResponse ~ prompt:", prompt)
             const result = await model.generateContent(prompt);
             const response = await result.response.text();
+            console.log("🚀 ~ fetchAIResponse ~ response:", response)
 
-            setAds(response.split("\n").filter((line) => line.trim() !== ""));
+            setAds(response.split(";").filter((line) => line.trim() !== ""));
         } catch (error) {
             console.error("Error fetching AI response:", error);
         } finally {
@@ -58,6 +60,7 @@ const GeminiAdGenerator = () => {
                     <p key={index}>{ad}</p>
                 ))}
             </ul>
+            
         </div>
     );
 };

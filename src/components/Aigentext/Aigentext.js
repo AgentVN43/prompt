@@ -195,10 +195,11 @@ export default function ChatBot() {
 
   const handleTitleChange = (e) => {
     const titlesArray = e.target.value
-      .split(",")
+      .split(";")
       .map((t) => t.trim())
       .filter((t) => t);
     setTitles(titlesArray);
+    console.log("🚀 ~ handleTitleChange ~ titlesArray:", titlesArray)
     setTotalTitles(titlesArray.length); // Cập nhật tổng số tiêu đề
   };
 
