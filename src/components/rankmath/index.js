@@ -148,6 +148,7 @@ const RankMath = () => {
         `${domain}/wp-json/wc/v3/products/${currentProduct.id}`,
         {
           ...values,
+          status: "publish",
           date_modified: new Date().toISOString(),
           meta_data: [
             {

@@ -102,24 +102,24 @@ export default function ChatBot() {
       structure: {
         goal: "Write an SEO-optimized blog post to rank high on SERP.",
         outline:
-          "The article must be well-structured with 7-8 sections using [h2] and [h3].\n" +
-          "Total word count: 1,500 - 2,000 words.\n" +
+          "The article must be well-structured with 7-8 sections using [h2] and [h3]." +
+          "Total word count: 1,500 - 2,000 words." +
           "Content must be engaging, informative, and provide value to the reader.",
 
         mainTitle: {
           instruction:
-            `The title must start with '${keyword}'.\n` +
-            "Ensure it is engaging, clear, and not exceed 60 characters.\n" +
+            `The title must start with '${keyword}'.` +
+            "Ensure it is engaging, clear, and not exceed 60 characters." +
             "Capitalize the first letter of each word.",
         },
 
         seoOptimization: {
           keywords: [keyword],
           keywordUsage:
-            "Ensure the main keyword appears in:\n" +
-            "- Title\n" +
-            "- First 100 words\n" +
-            "- At least 3 subheadings (h2/h3)\n" +
+            "Ensure the main keyword appears in:" +
+            "- Title" +
+            "- First 100 words" +
+            "- At least 3 subheadings (h2/h3)" +
             "- The last paragraph",
         },
       },
