@@ -10,11 +10,13 @@ export default function Keyword() {
   const [form] = Form.useForm();
   const [jsonData, setJsonData] = useState(null);
   const [aiResponse, setAiResponse] = useState(null);
+  const [genTitle, setGenTitle] = useState(null);
 
   const onFinish = (values) => {
     const structuredData = {
       request: `Create a keyword set according to the information below to ensure SEO standards.`,
       result_type: "json",
+      notes: "not fluff",
       website: {
         name: values.websiteName,
         url: values.websiteUrl,
@@ -64,6 +66,20 @@ export default function Keyword() {
     };
 
     setJsonData(structuredData);
+  };
+
+  const gentitle = (aiResponse) => {
+    if (!aiResponse) {
+      message.warning("Chưa có dữ liệu AI để tạo tiêu đề!");
+      return;
+    }
+
+    const structuredData = {
+      ...aiResponse,
+      request: `Create a title Vietnamese for the following information to ensure SEO standards.`,
+    };
+
+    setGenTitle(structuredData); // Cập nhật state để render lại AiButton
   };
 
   //   const saveToFile = (data) => {
@@ -141,19 +157,33 @@ export default function Keyword() {
             ) : (
               "Nhập dữ liệu để xem trước JSON"
             )}
-              {(
+            {
               <AiButton
                 prompts={[JSON.stringify(jsonData)]}
                 onComplete={(data) => setAiResponse(data.response)}
               />
-            )}
+            }
           </Card>
         </Col>
 
         {/* Cột 3: Kết quả AI */}
         <Col span={8}>
-          <Card title="🔹 Kết quả từ AI">
+          <Card title="🔹 Kết quả keyword từ AI">
             {aiResponse ? <pre>{aiResponse}</pre> : "Chưa có dữ liệu AI."}
+          </Card>
+          <Button onClick={() => gentitle(aiResponse)}>Tạo tiêu đề</Button>
+        </Col>
+      </Row>
+      <Row gutter={16} style={{ marginTop: "20px" }}>
+        {/* Cột 3: Kết quả AI */}
+        <Col span={8}>
+          <Card title="🔹 Kết quả tiêu đề từ AI">
+            {genTitle && (
+              <AiButton
+                prompts={[JSON.stringify(genTitle)]}
+                onComplete={(data) => setAiResponse(data.response)}
+              />
+            )}
           </Card>
         </Col>
       </Row>

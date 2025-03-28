@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { Button, message } from "antd";
 import { saveAs } from "file-saver";
-import { GoogleGenerativeAI } from "@google/generative-ai"; 
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 export default function AiButton({ prompts = [], onComplete }) {
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
   const [totalTime, setTotalTime] = useState(0);
 
-  const genAI = new GoogleGenerativeAI("AIzaSyDhOWmNxsygP4SXxqMRyLLJN0psE0UbDcs"); 
+  const genAI = new GoogleGenerativeAI(
+    "AIzaSyDhOWmNxsygP4SXxqMRyLLJN0psE0UbDcs"
+  );
 
   const handleGenerate = async () => {
     if (!prompts.length) {
@@ -53,8 +55,6 @@ export default function AiButton({ prompts = [], onComplete }) {
       <Button type="primary" onClick={handleGenerate} loading={loading}>
         Gửi đến AI
       </Button>
-      <p>⏱️ Tổng thời gian: {totalTime.toFixed(2)}s</p>
-      {response && <pre>{response}</pre>}
     </div>
   );
 }
