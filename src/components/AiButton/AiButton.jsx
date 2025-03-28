@@ -34,12 +34,12 @@ export default function AiButton({ prompts = [], onComplete }) {
       if (onComplete) onComplete({ prompt, response: responseText });
 
       // Lưu kết quả thành file JSON
-      saveAs(
-        new Blob([JSON.stringify({ prompt, response: responseText }, null, 2)], {
-          type: "application/json",
-        }),
-        "ai_response.json"
-      );
+      // saveAs(
+      //   new Blob([JSON.stringify({ prompt, response: responseText }, null, 2)], {
+      //     type: "application/json",
+      //   }),
+      //   "ai_response.json"
+      // );
     } catch (error) {
       console.error("Lỗi khi gọi AI:", error);
       message.error("Lỗi khi xử lý yêu cầu.");
