@@ -7,6 +7,7 @@ import RankMath from "../../components/rankmath";
 import Aigentext from "../../components/Aigentext/Aigentext";
 import SEOchecker from "../../components/SEOchecker/SEOchecker";
 import TitleGenerator from "../../components/CreateTitle";
+import Keyword from "../../components/Keyword/Keyword";
 
 const { Header, Content } = Layout;
 
@@ -18,6 +19,7 @@ const menuItems = [
   { key: "5", label: "Content AI", component: <Aigentext /> },
   { key: "6", label: "Check SEO", component: <SEOchecker /> },
   { key: "7", label: "Create", component: <TitleGenerator /> },
+  { key: "8", label: "Keyword", component: <Keyword /> },
 ];
 
 export default function Home() {
