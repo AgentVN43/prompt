@@ -89,15 +89,11 @@ export default function ChatBot() {
     "AIzaSyDhOWmNxsygP4SXxqMRyLLJN0psE0UbDcs"
   );
   const promptTemplate = (title) => {
-    const keyword = "hút mùi bếp";
-    const product = "máy hút mùi";
     return {
       expertise:
         "You are an expert in content marketing with deep SEO knowledge.",
       action: "Write",
       language: "Vietnamese",
-      product: product,
-      keyword: keyword,
       title: title,
       structure: {
         goal: "Write an SEO-optimized blog post to rank high on SERP.",
@@ -105,16 +101,7 @@ export default function ChatBot() {
           "The article must be well-structured with 7-8 sections using [h2] and [h3]." +
           "Total word count: 1,500 - 2,000 words." +
           "Content must be engaging, informative, and provide value to the reader.",
-
-        mainTitle: {
-          instruction:
-            `The title must start with '${keyword}'.` +
-            "Ensure it is engaging, clear, and not exceed 60 characters." +
-            "Capitalize the first letter of each word.",
-        },
-
         seoOptimization: {
-          keywords: [keyword],
           keywordUsage:
             "Ensure the main keyword appears in:" +
             "- Title" +
@@ -123,11 +110,11 @@ export default function ChatBot() {
             "- The last paragraph",
         },
       },
-
       paragraphRules:
         "Each paragraph should be 2-3 sentences long for easy readability.",
       languageRules: "Use natural, conversational language.",
-      outputFormat: "HTML format with proper semantic tags (h1, h2, h3, p). Start with <div> tag and avoid including headers, titles, or irrelevant content.",
+      result_type:
+        "Strictly adhere to: HTML formatting with correct semantic tags for sections (h1, h2, h3, p). No \n, no <!DOCTYPE html> all content is in 1 <div> tag",
     };
   };
   const [countdown, setCountdown] = useState(0);
@@ -168,7 +155,7 @@ export default function ChatBot() {
       }
 
       // Countdown delay giữa các request
-      for (let sec = 60; sec > 0; sec--) {
+      for (let sec = 5; sec > 0; sec--) {
         setCountdown(sec);
         await new Promise((resolve) => setTimeout(resolve, 1000));
       }
@@ -199,7 +186,7 @@ export default function ChatBot() {
       .map((t) => t.trim())
       .filter((t) => t);
     setTitles(titlesArray);
-    console.log("🚀 ~ handleTitleChange ~ titlesArray:", titlesArray)
+    console.log("🚀 ~ handleTitleChange ~ titlesArray:", titlesArray);
     setTotalTitles(titlesArray.length); // Cập nhật tổng số tiêu đề
   };
 

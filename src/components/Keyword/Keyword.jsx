@@ -11,6 +11,7 @@ export default function Keyword() {
   const [jsonData, setJsonData] = useState(null);
   const [aiResponse, setAiResponse] = useState(null);
   const [genTitle, setGenTitle] = useState(null);
+  const [aiTitleResponse, setAiTitleResponse] = useState(null);
 
   const onFinish = (values) => {
     const structuredData = {
@@ -62,6 +63,20 @@ export default function Keyword() {
                   `mua ${product.trim()} chất lượng cao tại ${values.location}`
               )
           : [],
+
+        lsi: [
+          "mua bếp từ ở đâu",
+          "cách chọn bếp từ tốt",
+          "bếp từ có tốn điện không",
+          "so sánh bếp từ và bếp hồng ngoại",
+          "bếp từ dùng có an toàn không",
+          "bếp từ phù hợp với gia đình nào",
+          values.location ? `ưu đãi bếp từ tại ${values.location}` : "",
+          values.brand ? `bếp từ ${values.brand} có tốt không` : "",
+          values.brand
+            ? `so sánh bếp từ ${values.brand} với thương hiệu khác`
+            : "",
+        ].filter(Boolean), // Xóa các giá trị rỗng nếu location hoặc brand không có
       },
     };
 
@@ -76,7 +91,62 @@ export default function Keyword() {
 
     const structuredData = {
       ...aiResponse,
-      request: `Create a title Vietnamese for the following information to ensure SEO standards.`,
+      request: `Choose 5 keywords and create 5 Vietnamese titles for website posts, following title_guidelines, thinking before response`,
+      result_type: "json",
+      notes: "not fluff",
+      title_guidelines: {
+        use_primary_keyword_first: {
+          description: "Start the title with the primary keyword.",
+          example: "10 Cruise Packing Tips to Avoid Overpacking",
+        },
+        highlight_pain_point_or_benefit: {
+          description: "Clearly highlight a problem or benefit in the title.",
+          example: "How to Pack for a Cruise Without Overpacking.",
+        },
+        character_limit: {
+          description:
+            "Keep the title under 60 characters for optimal SEO display.",
+          example: "5 Ways to Improve Your Photography Skills",
+        },
+        include_number_if_relevant: {
+          description:
+            "Use numbers in the title when appropriate to increase engagement.",
+          example: "5 Ways to Improve Your Photography Skills",
+        },
+        talk_directly_to_audience: {
+          description:
+            "Write the title directly addressing the target audience.",
+          example: "SEO Tips Every Travel Blogger Needs to Know.",
+        },
+        be_specific: {
+          description: "Provide clear and specific information.",
+          example: "How to Start a Travel Blog on WordPress in 3 Easy Steps.",
+        },
+        evoke_emotion_or_curiosity: {
+          description: "Use words that spark emotion or curiosity.",
+          example: "5 Surprising SEO Mistakes That Are Killing Your Traffic",
+        },
+        unique_angle: {
+          description:
+            "Make the title stand out by offering a unique perspective.",
+          example: "10 Wedding Budget Hacks You Haven’t Heard Before",
+        },
+        clarity_over_cleverness: {
+          description:
+            "Prioritize clarity and readability over being overly clever.",
+          example: "How to Bake the Perfect Sourdough Bread",
+        },
+        break_up_sentences: {
+          description:
+            "Use punctuation like colons, periods, or brackets to break up sentences for readability.",
+          example: "How to Start a Blog (And Make Money While You Sleep)",
+        },
+        address_common_objections: {
+          description:
+            "Tackle common concerns or objections readers might have.",
+          example: "Quick Dinner Recipes for Families With Picky Eaters",
+        },
+      },
     };
 
     setGenTitle(structuredData); // Cập nhật state để render lại AiButton
@@ -181,8 +251,13 @@ export default function Keyword() {
             {genTitle && (
               <AiButton
                 prompts={[JSON.stringify(genTitle)]}
-                onComplete={(data) => setAiResponse(data.response)}
+                onComplete={(data) => setAiTitleResponse(data.response)}
               />
+            )}
+            {aiTitleResponse ? (
+              <pre>{aiTitleResponse}</pre>
+            ) : (
+              "Chưa có dữ liệu AI."
             )}
           </Card>
         </Col>
