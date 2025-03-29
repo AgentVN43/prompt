@@ -90,10 +90,10 @@ export default function Keyword() {
     }
 
     const structuredData = {
-      ...aiResponse,
+      aiResponse,
       request: `Choose 5 keywords and create 5 Vietnamese titles for website posts, following title_guidelines, thinking before response`,
-      result_type: "json",
-      notes: "not fluff",
+      result_type: "plain text, separated by commas ;",
+      notes: "just vietnamese, not fluff, Do not arbitrarily add unnecessary data",
       title_guidelines: {
         use_primary_keyword_first: {
           description: "Start the title with the primary keyword.",
