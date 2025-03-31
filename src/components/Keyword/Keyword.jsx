@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Input, Button, Layout, Card, message, Row, Col } from "antd";
 import { SaveOutlined } from "@ant-design/icons";
 import { saveAs } from "file-saver";
@@ -12,6 +12,8 @@ export default function Keyword() {
   const [aiResponse, setAiResponse] = useState(null);
   const [genTitle, setGenTitle] = useState(null);
   const [aiTitleResponse, setAiTitleResponse] = useState(null);
+  const [result, setResult] = useState(null);
+  console.log("🚀 ~ Keyword ~ result:", result)
 
   const onFinish = (values) => {
     const structuredData = {
@@ -32,49 +34,47 @@ export default function Keyword() {
 
       seo_keywords: {
         general: [
-          "bếp từ nhập khẩu",
-          "bếp từ giá rẻ",
-          "bếp từ cao cấp",
-          "bếp từ âm",
-          "bếp điện từ",
+          `${values.products} nhập khẩu`,
+          `${values.products} giá rẻ`,
+          `${values.products} cao cấp`,
         ],
 
         location_based: values.location
           ? [
-              `bếp từ ${values.location}`,
-              `mua bếp từ tại ${values.location}`,
-              `bếp từ giá tốt ở ${values.location}`,
-            ]
+            `${values.products} ${values.location}`,
+            `mua ${values.products} tại ${values.location}`,
+            `${values.products} giá tốt ở ${values.location}`,
+          ]
           : [],
 
         brand_based: values.brand
           ? [
-              `bếp từ ${values.brand}`,
-              `bếp từ ${values.brand} chính hãng`,
-              `bếp từ ${values.brand} giá rẻ`,
-            ]
+            `${values.products} ${values.brand}`,
+            `${values.products} ${values.brand} chính hãng`,
+            `${values.products} ${values.brand} giá rẻ`,
+          ]
           : [],
 
         long_tail: values.products
           ? values.products
-              .split(",")
-              .map(
-                (product) =>
-                  `mua ${product.trim()} chất lượng cao tại ${values.location}`
-              )
+            .split(",")
+            .map(
+              (product) =>
+                `mua ${product.trim()} chất lượng cao tại ${values.location}`
+            )
           : [],
 
         lsi: [
-          "mua bếp từ ở đâu",
-          "cách chọn bếp từ tốt",
-          "bếp từ có tốn điện không",
-          "so sánh bếp từ và bếp hồng ngoại",
-          "bếp từ dùng có an toàn không",
-          "bếp từ phù hợp với gia đình nào",
-          values.location ? `ưu đãi bếp từ tại ${values.location}` : "",
-          values.brand ? `bếp từ ${values.brand} có tốt không` : "",
+          `mua ${values.products} ở đâu`,
+          `cách chọn ${values.products} tốt`,
+          `${values.products} có tốn điện không`,
+          `so sánh ${values.products} và bếp hồng ngoại`,
+          `${values.products} dùng có an toàn không`,
+          `${values.products} phù hợp với gia đình nào`,
+          values.location ? `ưu đãi ${values.products} tại ${values.location}` : "",
+          values.brand ? `${values.products} ${values.brand} có tốt không` : "",
           values.brand
-            ? `so sánh bếp từ ${values.brand} với thương hiệu khác`
+            ? `so sánh ${values.products} ${values.brand} với thương hiệu khác`
             : "",
         ].filter(Boolean), // Xóa các giá trị rỗng nếu location hoặc brand không có
       },
@@ -91,8 +91,8 @@ export default function Keyword() {
 
     const structuredData = {
       aiResponse,
-      request: `Choose 5 keywords and create 5 Vietnamese titles for website posts, following title_guidelines, thinking before response`,
-      result_type: "plain text, separated by commas ;",
+      request: `Follow list keyword to aiResponse create 10 Vietnamese titles for website posts, following title_guidelines, thinking before response`,
+      result_type: "plain text, separated by commas `;`",
       notes: "just vietnamese, not fluff, Do not arbitrarily add unnecessary data",
       title_guidelines: {
         use_primary_keyword_first: {
@@ -160,6 +160,9 @@ export default function Keyword() {
   //     message.success("Dữ liệu đã được lưu vào project.json");
   //   };
 
+  useEffect(() => {
+    setResult(aiTitleResponse?.split(";").map((p) => p.trim()))
+  }, [aiTitleResponse])
   return (
     <Layout style={{ height: "100vh", padding: "20px" }}>
       {/* Dòng 1: Form nhập dữ liệu */}
@@ -246,7 +249,7 @@ export default function Keyword() {
       </Row>
       <Row gutter={16} style={{ marginTop: "20px" }}>
         {/* Cột 3: Kết quả AI */}
-        <Col span={8}>
+        <Col span={16}>
           <Card title="🔹 Kết quả tiêu đề từ AI">
             {genTitle && (
               <AiButton
@@ -255,10 +258,44 @@ export default function Keyword() {
               />
             )}
             {aiTitleResponse ? (
-              <pre>{aiTitleResponse}</pre>
+              <div
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: "500px",  // Có thể tùy chỉnh chiều cao tối đa
+                  overflow: "auto",
+                }}
+              >
+                <pre
+                  style={{
+                    whiteSpace: "pre-wrap",
+                    wordBreak: "break-word",
+                  }}
+                >
+                  {aiTitleResponse}
+                </pre>
+              </div>
             ) : (
               "Chưa có dữ liệu AI."
             )}
+          </Card>
+
+
+        </Col>
+        <Col span={8}>
+          <Card>
+            <div
+              style={{
+                maxWidth: "100%",
+                maxHeight: "600px",  // Có thể tùy chỉnh chiều cao tối đa
+                overflow: "auto",
+              }}
+            >
+              {
+                result?.map((item, index) => (
+                  <div key={index}>{index + 1}.{item}</div>
+                ))
+              }
+            </div>
           </Card>
         </Col>
       </Row>
