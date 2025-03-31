@@ -84,6 +84,8 @@ export default function ChatBot() {
   const [responses, setResponses] = useState([]);
   const [totalTitles, setTotalTitles] = useState(0);
   const [responsesReceived, setResponsesReceived] = useState(0);
+  const [countdown, setCountdown] = useState(0);
+  const [totalTime, setTotalTime] = useState(5);
 
   const genAI = new GoogleGenerativeAI(
     "AIzaSyDhOWmNxsygP4SXxqMRyLLJN0psE0UbDcs"
@@ -113,12 +115,12 @@ export default function ChatBot() {
       paragraphRules:
         "Each paragraph should be 2-3 sentences long for easy readability.",
       languageRules: "Use natural, conversational language.",
-      result_type:
+      result_format:
         "Strictly adhere to: HTML formatting with correct semantic tags for sections (h1, h2, h3, p). No \n, no <!DOCTYPE html> all content is in 1 <div> tag",
+        result_structure: "array with 3 elements: title, content, status (default: 'publish')",
     };
   };
-  const [countdown, setCountdown] = useState(0);
-  const [totalTime, setTotalTime] = useState(5);
+
 
   const handleGenerate = async () => {
     setLoading(true);
@@ -132,6 +134,7 @@ export default function ChatBot() {
     for (let i = 0; i < titles.length; i++) {
       const title = titles[i];
       const prompt = promptTemplate(title);
+      console.log(prompt)
       let requestStartTime = Date.now(); // Bắt đầu tính thời gian gửi request
 
       try {
@@ -139,7 +142,7 @@ export default function ChatBot() {
         const result = await model.generateContent(JSON.stringify(prompt));
         const responseText = result.response.text();
 
-        generatedResponses.push({ title, response: responseText });
+        generatedResponses.push({ title, content: responseText, status: "publish" });
         setMessages((prev) => [
           ...prev,
           { sender: "bot", text: `Generated content for: ${title}` },
