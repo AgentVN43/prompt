@@ -117,7 +117,6 @@ export default function ChatBot() {
       languageRules: "Use natural, conversational language.",
       result_format:
         "Strictly adhere to: HTML formatting with correct semantic tags for sections (h1, h2, h3, p). No \n, no <!DOCTYPE html> all content is in 1 <div> tag",
-        result_structure: "array with 3 elements: title, content, status (default: 'publish')",
     };
   };
 
