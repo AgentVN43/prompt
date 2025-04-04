@@ -59,7 +59,7 @@ const RankMath = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `${domain}/wp-json/wc/v3/products?page=${page}`,
+        `${domain}/wp-json/wc/v3/products?per_page=100`,
         {
           auth: {
             username: credentials.username,
