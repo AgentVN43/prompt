@@ -73,9 +73,6 @@ export default function Keyword() {
           `${values.products} phù hợp với gia đình nào`,
           values.location ? `ưu đãi ${values.products} tại ${values.location}` : "",
           values.brand ? `${values.products} ${values.brand} có tốt không` : "",
-          values.brand
-            ? `so sánh ${values.products} ${values.brand} với thương hiệu khác`
-            : "",
         ].filter(Boolean), // Xóa các giá trị rỗng nếu location hoặc brand không có
       },
     };
