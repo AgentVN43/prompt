@@ -53,7 +53,7 @@ const RankMath = () => {
   // Domain: bepphugia
   // const consumerKey = "ck_da8e1b8c5b54e398e4d0303789dd9a4b13015903";
   // const consumerSecret = "cs_a874581785faafcafe9ba8c433aeeb1f36d51235";
-
+  
   // Fetch products for a specific page
   const fetchProducts = async (page = 1) => {
     setLoading(true);
@@ -67,7 +67,6 @@ const RankMath = () => {
           },
         }
       );
-
       console.log(response.data);
 
       const filteredProducts = response.data.filter((product) => {
@@ -284,8 +283,8 @@ const RankMath = () => {
     if (selectedCredentials) {
       setDomain(selectedDomain);
       setCredentials({
-        username: selectedCredentials.username,
-        password: selectedCredentials.password,
+        username: selectedCredentials.username.trim(),
+        password: selectedCredentials.password.trim(),
       });
     }
   };
@@ -365,7 +364,7 @@ const RankMath = () => {
       </Select>
       <Button
         type="primary"
-        onClick={() => fetchProducts(1)}
+        onClick={() => fetchProducts()}
         disabled={!domain}
         style={{ marginBottom: "20px" }}
       >

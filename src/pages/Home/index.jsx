@@ -15,7 +15,7 @@ const menuItems = [
   { key: "1", label: "Create Content for SEO", component: <CreateContent /> },
   { key: "2", label: "Multiple Open Tabs", component: <MultipleOpen /> },
   { key: "3", label: "Digital Marketing", component: <DigitalMarketing /> },
-  { key: "4", label: "Cotent Wordpress", component: <RankMath /> },
+  { key: "4", label: "Content Wordpress", component: <RankMath /> },
   { key: "5", label: "Content AI", component: <Aigentext /> },
   { key: "6", label: "Check SEO", component: <SEOchecker /> },
   { key: "7", label: "Create", component: <TitleGenerator /> },
